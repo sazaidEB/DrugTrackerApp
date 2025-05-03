@@ -202,6 +202,13 @@ fun DrugDetailScreen(
                                 "Limit: Max 3 drugs can be added.",
                                 Toast.LENGTH_SHORT
                             ).show()
+                        },
+                        onSuccess = {
+                            Toast.makeText(
+                                context,
+                                "Medication added successfully!",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     )
                 },

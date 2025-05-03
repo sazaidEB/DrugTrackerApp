@@ -51,12 +51,22 @@ class DrugViewModel @Inject constructor(
         }
     }
 
-    fun addDrug(drug: DrugEntity, onLimitExceeded: () -> Unit) {
+    fun addDrug(
+        drug: DrugEntity,
+        onLimitExceeded: () -> Unit,
+        onSuccess: () -> Unit // ✅ added
+    ) {
         viewModelScope.launch {
             val added = repository.addDrug(drug)
-            if (!added) onLimitExceeded() else getUserDrugs()
+            if (!added) {
+                onLimitExceeded()
+            } else {
+                getUserDrugs()
+                onSuccess() // ✅ call success when added
+            }
         }
     }
+
 
     fun deleteDrug(drug: DrugEntity) {
         viewModelScope.launch {
