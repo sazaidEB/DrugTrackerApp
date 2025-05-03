@@ -230,7 +230,7 @@ fun LoginScreen(navController: NavHostController) {
                                 .addOnCompleteListener { task ->
                                     isLoading = false
                                     if (task.isSuccessful) {
-                                        navController.navigate("my_drugs") {
+                                        navController.navigate("search") {
                                             popUpTo("login") { inclusive = true }
                                         }
                                     } else {
