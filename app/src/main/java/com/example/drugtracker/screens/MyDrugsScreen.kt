@@ -268,12 +268,22 @@ fun MyDrugsScreen(
                                 navController.navigate("search")
                             }
                         ) {
-                            Text(
-                                text = "Search Medications",
-                                style = MaterialTheme.typography.titleMedium.copy(
-                                    color = MaterialTheme.colorScheme.primary
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Add,
+                                    // This shows the + icon
+                                    contentDescription = "Add Icon",
+                                    tint = (Color(0xFF007AFF)),
+                                    modifier = Modifier.size(18.dp) // You can adjust size as needed
                                 )
-                            )
+                                Spacer(modifier = Modifier.width(6.dp)) // Adds spacing between the icon and text
+                                Text(
+                                    text = "Search Medication",
+                                    color =(Color(0xFF007AFF))
+                                )
+                            }
                         }
                     }
                 } else {
