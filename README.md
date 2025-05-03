@@ -31,4 +31,4 @@ DrugTracker is an Android app built with **Jetpack Compose** that helps users se
 1️⃣ **Clone the repository:**
 
 ```bash
-git clone https://github.com/your-username/DrugTracker.git
+git clone https://https://github.com/sazaidEB/DrugTrackerApp
