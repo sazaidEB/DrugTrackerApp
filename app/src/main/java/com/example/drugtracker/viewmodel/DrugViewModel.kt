@@ -1,20 +1,16 @@
 package com.example.drugtracker.viewmodel
 
-
-
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.drugtracker.data.DrugEntity
 import com.example.drugtracker.model.Drug
 import com.example.drugtracker.repository.DrugRepository
-
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.math.log
 
 @HiltViewModel
 class DrugViewModel @Inject constructor(
@@ -30,9 +26,20 @@ class DrugViewModel @Inject constructor(
     private val _drugDetail = MutableStateFlow("Loading...")
     val drugDetail: StateFlow<String> = _drugDetail
 
+    private val _isLoading = MutableStateFlow(false) // ✅ added loading state
+    val isLoading: StateFlow<Boolean> = _isLoading   // ✅ expose loading state
+
     fun searchDrugs(name: String) {
         viewModelScope.launch {
-            _searchResults.value = repository.searchDrugs(name)
+            _isLoading.value = true  // ✅ Start loading
+            try {
+                _searchResults.value = repository.searchDrugs(name)
+            } catch (e: Exception) {
+                Log.e("DrugViewModel", "Search failed", e)
+                _searchResults.value = emptyList()
+            } finally {
+                _isLoading.value = false  // ✅ Stop loading
+            }
         }
     }
 
@@ -43,7 +50,6 @@ class DrugViewModel @Inject constructor(
             }
         }
     }
-
 
     fun addDrug(drug: DrugEntity, onLimitExceeded: () -> Unit) {
         viewModelScope.launch {
@@ -59,14 +65,13 @@ class DrugViewModel @Inject constructor(
         }
     }
 
-
     fun fetchDrugDetail(rxcui: String) {
         viewModelScope.launch {
             try {
                 val url = "https://rxnav.nlm.nih.gov/REST/rxcui/$rxcui/allProperties.json?prop=all"
                 val response = java.net.URL(url).readText()
                 _drugDetail.value = response.take(500)
-                Log.d("sazaid111","${response.toString()}")
+                Log.d("DrugViewModel", "Detail loaded successfully")
             } catch (e: Exception) {
                 _drugDetail.value = "Failed to load details."
             }
