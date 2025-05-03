@@ -36,7 +36,7 @@ Clone the repository:
 bash
 Copy
 Edit
-git clone https:// https://https://github.com/sazaidEB/DrugTrackerApp
+git clone https://github.com/sazaidEB/DrugTrackerApp/tree/master
 Open in Android Studio.
 
 Sync Gradle and run the app.
