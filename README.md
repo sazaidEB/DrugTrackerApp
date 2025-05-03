@@ -1,34 +1,46 @@
-# DrugTrackerApp
-# 💊 DrugTrackerApp
+📲 Drug Tracker App
+This is an Android app built using Jetpack Compose that allows users to search, track, and manage their medications.
 
-DrugTracker is an Android app built with **Jetpack Compose** that helps users search and view details about medications.
+🚀 Features
+🔍 Search Medications – Users can search for medications and view detailed information.
 
-## 🚀 Features
+💊 Manage Drugs – Add and remove medications from a personal list.
 
-- 🔍 **Search Medication:**
-  - Real-time search functionality.
-  - Displays a list of drugs based on user input.
+🔄 Swipe to Delete – Easily remove medications with swipe gestures.
 
-- 📄 **View Details:**
-  - Click a medication to view detailed information.
-  - Drug name and other metadata shown.
+🔐 Authentication – User login and signup implemented using Firebase SDK.
 
-- 🛠️ **Modern UI:**
-  - Built using Jetpack Compose.
-  - Clean, responsive design.
+🛠️ Tech Stack
+Kotlin
 
-## 🏗️ Tech Stack
+Jetpack Compose
 
-- Kotlin
-- Jetpack Compose
-- MVVM Architecture
-- LiveData / State management
-- Gradle
+Firebase Authentication SDK
+
+MVVM Architecture
+
+🔑 Firebase Integration
+The app uses Firebase SDK for login and signup functionality. To run the project:
+
+Set up a Firebase project.
+
+Download the google-services.json file.
+
+Place it in your app's app/ directory.
+
+Make sure the Firebase Authentication module is enabled (e.g., Email/Password sign-in).
+
+📦 Setup Instructions
+Clone the repository:
+
+bash
+Copy
+Edit
+git clone https:// https://https://github.com/sazaidEB/DrugTrackerApp
+Open in Android Studio.
+
+Sync Gradle and run the app.
 
 
-## 🛠️ Setup & Run Locally
 
-1️⃣ **Clone the repository:**
 
-```bash
-git clone https://https://github.com/sazaidEB/DrugTrackerApp
